@@ -6,9 +6,7 @@ import com.herokuapp.pages.UnsuccessPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -44,5 +42,11 @@ public class LoginTest {
 UnsuccessPage objUnsuccessPage = new UnsuccessPage(driver);
 Assert.assertTrue(objUnsuccessPage.getUnsuccessPageHeaderText().contains("Your username is invalid!"));
 
+    }
+    @AfterTest
+    public void afterMetod() {
+        if ( driver != null ) {
+            driver.quit();
+        }
     }
 }
